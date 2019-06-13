@@ -1,0 +1,15 @@
+version: "3.7"
+
+services:
+  swagger-ui:
+    image: "swaggerapi/swagger-ui:latest"
+    ports:
+      - "8080:8080"
+    volumes:
+      - type: bind
+        source: ./
+        target: /usr/share/nginx/html/specs
+    environment:
+      # SEE: https://github.com/swagger-api/swagger-ui/blob/master/docs/usage/configuration.md#core
+      URLS: "[ { url: 'specs/1-swagger.yml', name: '1' }, { url: 'specs/2-swagger.yml', name: '2' } ]"
+      URLS_PRIMARY_NAME: "1"

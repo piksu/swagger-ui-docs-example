@@ -1,0 +1,43 @@
+info:
+  title: Example
+  version: 1.0.0
+consumes:
+  - application/json
+produces:
+  - application/json
+swagger: '2.0'
+
+paths:
+  /api/v1/examples/:
+    get:
+      operationId: ListExamples
+      summary: List examples
+      responses:
+        200:
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Example'
+    post:
+      operationId: CreateExample
+      summary: Create an Example
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/Example'
+      parameters:
+        - name: body
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/Example'
+
+definitions:
+  Example:
+    type: object
+    properties:
+      example:
+        description: example stuff.
+        type: string
